@@ -1,0 +1,98 @@
+{
+    "$schema": "/home/meet/.config/fastfetch/json_schema.json",
+    "logo": {
+        "source": "$(find ${XDG_CONFIG_HOME:-$HOME}'/.config/fastfetch/pngs/'  -name  '*png' | sort -R | head -1)",
+        "type": "kitty-icat",
+        "height": 9
+    },
+    "display": {
+        "separator": " : "
+    },
+    "modules": [
+        {
+            "type": "title",
+            "key": "  \uf415"
+        },
+        "break",
+        {
+            "type": "host",
+            "key": "  \udb80\udf79 主    机",
+            "keyColor": "red"
+        },
+        {
+            "type": "display",
+            "key": "  \udb83\ude51 显 示 器",
+            "keyColor": "green"
+        },
+        "break",
+        {
+            "type": "os",
+            "key": "  \udb82\udcc7 系    统",
+            "keyColor": "red"
+        },
+        {
+            "type": "kernel",
+            "key": "  \uf305 脊椎版本",
+            "keyColor": "red"
+        },
+        {
+            "type": "Packages",
+            "key": "  \ueb29 安 装 包",
+            "keyColor": "green"
+        },
+        "break",
+        {
+            "type": "wm",
+            "key": "  \uf2da 面    子",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "terminal",
+            "key": "  \uebca 嘴 巴 子",
+            "keyColor": "yellow"
+        },
+        "break",
+        {
+            "type": "cpu",
+            "format": "{1}",
+            "key": "  \udb83\udee0 心脏规格",
+            "keyColor": "blue"
+        },
+        {
+            "type": "gpu",
+            "format": "{2}",
+            "key": "  \uec19 大脑档次",
+            "keyColor": "blue"
+        },
+        {
+            "type": "gpu",
+            "format": "{3}",
+            "key": "  \ue266 葡 萄 糖",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "memory",
+            "key": "  \udb80\udf5b 胃 容 量",
+            "keyColor": "magenta"
+        },
+        "break",
+        {
+            "type": "command",
+            "key": "  󱦟 年    龄",
+            "keyColor": "31",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        },
+        {
+            "type": "uptime",
+            "key": "  󱫐 醒来时长",
+            "keyColor": "red"
+        },
+        "break",
+        {
+            "type": "colors",
+            "paddingLeft": 2,
+            "symbol": "circle"
+        },
+        "break"
+    ]
+}
