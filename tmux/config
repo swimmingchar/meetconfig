@@ -1,0 +1,196 @@
+config:
+  fallback-icon: "?" # show when no definition is found
+  multi-pane-icon: "\uebc8" # show when window has multiple panes (blank by default)
+  show-name: true # show the window name with the icon (defaults to false)
+  icon-position: "left" # show the icon to the "left" or "right" of the window name (defaults to left)
+
+icons:
+  nvim: ""
+  vim: ""
+  bash: ""
+  htop: "󰓅"
+  root: "󰦣"
+  lazygit: ""
+  less: ""
+  yazi: "󰇥"
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+set -g @plugin 'tmux-plugins/tmux-contnuum'
+# themes 
+#set -g @plugin 'seebi/tmux-colors-solarized'
+#set -g @plugin "tmux-plugins/tmux-battery"
+#set -g @plugin "olimorris/tmux-pomodoro-plus"
+set -g @plugin "wabri/tmux-nord-plusplus"
+
+#---0820---
+# Reduce delay for exiting insert mode with ESC in Neovim
+set -sg escape-time 10
+
+# tpm plugin manager setup
+set -g @plugin 'catppuccin/tmux'
+
+# list of tmux plugins
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'tmux-plugins/tmux-resurrect' # persist tmux sessions after computer restart
+set -g @plugin 'tmux-plugins/tmux-continuum' # automatically saves sessions for you every 15 minutes
+
+# Plugin settings
+set -g @resurrect-capture-pane-contents 'on'
+set -g @continuum-restore 'on'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
+# set -g @plugin 'git@github.com:user/plugin'
+# set -g @plugin 'git@bitbucket.com:user/plugin'
+
+#### COLOUR (Solarized 256)
+
+# default statusbar colors
+set-option -g status-style fg=colour136,bg=colour235 #yellow and base02
+set -g default-terminal "screen-256color"
+
+# default window title colors
+set-window-option -g window-status-style fg=colour244,bg=default #base0 and default
+# set-window-option -g utf8 on
+#set-window-option -g window-status-style dim
+setw -g automatic-rename off
+setw -g allow-rename off
+
+# active window title colors
+set-window-option -g window-status-current-style fg=colour166,bg=default #orange and default
+#set-window-option -g window-status-current-style bright
+
+# pane border
+set-option -g pane-border-style fg=colour235 #base02
+set-option -g pane-active-border-style fg=colour240 #base01
+
+# message text
+set-option -g message-style fg=colour166,bg=colour235 #orange and base02
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+# clock
+set-window-option -g clock-mode-colour colour64 #green
+
+# bell
+set-window-option -g window-status-bell-style fg=colour235,bg=colour160 #base02, red
+
+
+# DESIGN TWEAKS
+
+# don't do anything when a 'bell' rings
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
+
+# clock mode
+setw -g clock-mode-colour colour1
+
+# copy mode
+setw -g mode-style 'fg=colour1 bg=colour18 bold'
+
+# pane borders
+set -g pane-border-style 'fg=colour1'
+set -g pane-active-border-style 'fg=colour3'
+
+# statusbar
+set -g status-position bottom
+set -g status-justify left
+set -g status-style 'fg=colour1'
+set -g status-left ''
+set -g status-right '%Y-%m-%d %H:%M '
+set -g status-right-length 50
+set -g status-left-length 10
+
+setw -g window-status-current-style 'fg=colour0 bg=colour1 bold'
+setw -g window-status-current-format ' #I #W #F '
+
+setw -g window-status-style 'fg=colour1 dim'
+setw -g window-status-format ' #I #[fg=colour7]#W #[fg=colour1]#F '
+
+setw -g window-status-bell-style 'fg=colour2 bg=colour1 bold'
+
+# statusbar - 2
+# set -g status- utf8 on # 状态栏支持utf8
+set -g status-interval 1 # 状态栏刷新时间
+set -g status-justify left # 状态栏列表左对齐
+setw -g monitor-activity on # 非当前窗口有内容更新时在状态栏通知
+
+set -g status-bg black # 设置状态栏背景黑色
+set -g status-fg yellow # 设置状态栏前景黄色
+set -g status-style "bg=black, fg=yellow" # 状态栏前景背景色
+
+set -g status-left "#[bg=#FF661D] ❐ #S " # 状态栏左侧内容
+set -g status-right 'Continuum status: #{continuum_status}' # 状态栏右侧内容
+set -g status-left-length 300 # 状态栏左边长度300
+set -g status-right-length 500 # 状态栏左边长度500
+
+set -wg window-status-format " #I #W " # 状态栏窗口名称格式
+set -wg window-status-current-format " #I:#W#F " # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+set -wg window-status-separator "" # 状态栏窗口名称之间的间隔
+set -wg window-status-current-style "bg=red" # 状态栏当前窗口名称的样式
+set -wg window-status-last-style "fg=red" # 状态栏最后一个窗口名称的样式
+
+set -g message-style "bg=#202529, fg=#91A8BA" # 指定消息通知的前景、后景色
+
+
+
+# messages
+set -g message-style 'fg=colour2 bg=colour0 bold'
+# 支持鼠标滚轮
+set-option -g mouse on
+# 垂直方向新增面板，默认进入当前目录
+unbind '"'
+bind - splitw -v -c '#{pane_current_path}'
+# 水平方向新增面板，默认进入当前目录
+unbind %
+bind | splitw -h -c '#{pane_current_path}'
+
+# 绑定hjkl键为面板切换的上下左右键
+bind -r k select-pane -U # 绑定k为↑
+bind -r j select-pane -D # 绑定j为↓
+bind -r h select-pane -L # 绑定h为←
+bind -r l select-pane -R # 绑定l为→
+# 绑定Ctrl+hjkl键为面板上下左右调整边缘的快捷指令
+bind -r ^k resizep -U 10 # 绑定Ctrl+k为往↑调整面板边缘10个单元格
+bind -r ^j resizep -D 10 # 绑定Ctrl+j为往↓调整面板边缘10个单元格
+bind -r ^h resizep -L 10 # 绑定Ctrl+h为往←调整面板边缘10个单元格
+bind -r ^l resizep -R 10 # 绑定Ctrl+l为往→调整面板边缘10个单元格
+
+# buffer缓存复制到Linux系统粘贴板
+bind C-c run " tmux save-buffer - | xclip -i -sel clipboard"
+# Linux系统粘贴板内容复制到会话
+bind C-v run " tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+
+# Apply Catppuccin theme configuartions
+set -g @catppuccin_window_left_separator ""
+set -g @catppuccin_window_right_separator " "
+set -g @catppuccin_window_middle_separator " █"
+set -g @catppuccin_window_number_position "right"
+
+set -g @catppuccin_window_default_fill "number"
+set -g @catppuccin_window_default_text "#W"
+
+set -g @catppuccin_window_current_fill "number"
+set -g @catppuccin_window_current_text "#W"
+
+set -g @catppuccin_status_modules_right "user host session"
+set -g @catppuccin_status_left_separator  " "
+set -g @catppuccin_status_right_separator ""
+set -g @catppuccin_status_fill "icon"
+set -g @catppuccin_status_connect_separator "no"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
