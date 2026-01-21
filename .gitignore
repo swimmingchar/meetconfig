@@ -4,6 +4,7 @@ cni/*
 configstore/*
 fish/*
 go/*
+uv/*
 google-chrome-for-testing/*
 matplotlib/*
 procps/*
